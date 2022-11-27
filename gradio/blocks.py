@@ -12,6 +12,8 @@ import time
 import typing
 import warnings
 import webbrowser
+import pyqrcode
+
 from types import ModuleType
 from typing import (
     TYPE_CHECKING,
@@ -1395,6 +1397,8 @@ class Blocks(BlockContext):
                     share_url = networking.setup_tunnel(self.server_port, None)
                     self.share_url = share_url
                 print(strings.en["SHARE_LINK_DISPLAY"].format(self.share_url))
+                qrcodegenerate = pyqrcode.create(self.share_url)
+                print(number.qrcodegenerate)
                 if not (quiet):
                     print(strings.en["SHARE_LINK_MESSAGE"])
             except RuntimeError:
